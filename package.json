@@ -4,7 +4,7 @@
   "description": "The lightest colorpicker.",
   "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./src/types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sunstrikemd/kapto-mui-color.git"
@@ -147,11 +147,7 @@
     "setupFilesAfterEnv": [
       "<rootDir>/test/setup.js"
     ],
-    "files": [
-      "dist",
-      "index.d.ts",
-      "src/**/*.d.ts"
-    ]
+    "files": []
   },
   "files": [
     "dist",
