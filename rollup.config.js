@@ -1,5 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
+import copy from 'rollup-plugin-copy';
 import { terser } from 'rollup-plugin-terser';
 
 export default {
@@ -30,5 +31,12 @@ export default {
     { file: './dist/esm/index.js', format: 'esm', sourcemap: true },
     { file: './dist/index.js', format: 'cjs', sourcemap: true },
   ],
-  plugins: [babel(), resolve({ extensions: ['.js', '.jsx'] }), terser()],
+  plugins: [
+    babel(),
+    resolve({ extensions: ['.js', '.jsx'] }),
+    copy({
+      targets: [{ src: 'src/types/index.d.ts', dest: 'dist' }],
+    }),
+    terser(),
+  ],
 };
