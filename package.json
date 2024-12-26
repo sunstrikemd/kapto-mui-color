@@ -1,6 +1,6 @@
 {
   "name": "@kapto/mui-color",
-  "version": "1.2.2",
+  "version": "1.2.1",
   "description": "The lightest colorpicker.",
   "main": "./dist/index.js",
   "module": "./dist/esm/index.js",
@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
-    "build": "yarn clean &  cross-env NODE_ENV=production rollup -c",
+    "build": "yarn clean &  cross-env NODE_ENV=production rollup -c && packito",
     "build-storybook": "build-storybook -c .storybook -o public",
     "storybook": "start-storybook -p 9005 -c .storybook",
     "lint": "eslint --ext js,jsx src",
@@ -146,6 +146,10 @@
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/test/setup.js"
+    ],
+    "files": [
+      "dist",
+      "src/**/*.d.ts"
     ]
   }
 }
