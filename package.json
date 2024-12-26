@@ -149,7 +149,12 @@
     ],
     "files": [
       "dist",
+      "index.d.ts",
       "src/**/*.d.ts"
     ]
-  }
+  },
+  "files": [
+    "dist",
+    "src/**/*.d.ts"
+  ]
 }
