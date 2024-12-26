@@ -1,17 +1,14 @@
-name: Publish to NPM
-on:
-  create:
-    tags:
-      - v*
+name: Pull request checks
+on: [pull_request]
+
 jobs:
-  publish-build:
+  lint-buld:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org/
       - name: Install dependencies
         run: |
           npm ci
@@ -20,10 +17,4 @@ jobs:
       - name: Build
         run: |
           npx npm-install-peers
-          npm run build
-
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: public
-          strategy: all
+          npm run lint:check
