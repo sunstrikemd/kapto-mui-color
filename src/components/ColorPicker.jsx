@@ -51,19 +51,19 @@ const getColorText = (color, disablePlainColor) => {
 };
 
 const ColorPicker = ({
-  value,
-  disableTextfield,
-  deferred,
-  palette,
-  inputFormats,
-  openAtStart,
   onChange,
-  onOpen,
-  doPopup,
-  disableAlpha,
-  hslGradient,
-  hideTextfield,
-  disablePlainColor,
+  value = 'none',
+  disableTextfield = false,
+  deferred = false,
+  palette = undefined,
+  inputFormats = ['hex', 'rgb'],
+  openAtStart = false,
+  onOpen = undefined,
+  doPopup = undefined,
+  disableAlpha = false,
+  hslGradient = false,
+  hideTextfield = false,
+  disablePlainColor = false,
 }) => {
   const classes = useStyles();
   const refPicker = useRef(null);
@@ -162,6 +162,7 @@ const ColorPicker = ({
   );
 };
 
+/* eslint-disable react/require-default-props */
 ColorPicker.propTypes = {
   value: CommonTypes.color,
   disableTextfield: PropTypes.bool,
@@ -179,21 +180,6 @@ ColorPicker.propTypes = {
   hslGradient: PropTypes.bool,
   hideTextfield: PropTypes.bool,
   disablePlainColor: PropTypes.bool,
-};
-
-ColorPicker.defaultProps = {
-  value: 'none',
-  disableTextfield: false,
-  deferred: false,
-  palette: undefined,
-  inputFormats: ['hex', 'rgb'],
-  onOpen: undefined,
-  openAtStart: false,
-  doPopup: undefined,
-  disableAlpha: false,
-  hslGradient: false,
-  hideTextfield: false,
-  disablePlainColor: false,
 };
 
 export default uncontrolled(ColorPicker);

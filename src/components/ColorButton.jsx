@@ -81,12 +81,12 @@ const useStyles = makeStyles({
  */
 const ColorButton = ({
   color: c,
-  size,
-  borderWidth,
-  borderColor,
-  forwardRef,
-  tooltip,
-  disableAlpha,
+  size = 24,
+  borderWidth = 0,
+  borderColor = undefined,
+  forwardRef = undefined,
+  tooltip = undefined,
+  disableAlpha = false,
   className,
   ...props
 }) => {
@@ -131,6 +131,8 @@ const ColorButton = ({
   return component;
 };
 
+/* eslint-disable react/require-default-props */
+
 ColorButton.propTypes = {
   /**
     The color to display, could be a css valid string, an integer, or a Color object see  ColorType
@@ -160,15 +162,10 @@ ColorButton.propTypes = {
     Internal usage
    */
   forwardRef: PropTypes.shape({ current: PropTypes.elementType }),
-};
-
-ColorButton.defaultProps = {
-  size: 24,
-  borderWidth: 0,
-  borderColor: undefined,
-  forwardRef: undefined,
-  tooltip: undefined,
-  disableAlpha: false,
+  /**
+   The className of the button
+   */
+  className: PropTypes.string,
 };
 
 export default ColorButton;

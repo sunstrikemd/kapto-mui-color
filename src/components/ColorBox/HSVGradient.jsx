@@ -92,7 +92,7 @@ const useStyles = makeStyles({
   },
 });
 
-const HSVGradient = ({ className, color, onChange, isHsl, ...props }) => {
+const HSVGradient = ({ className, color, onChange, isHsl = false, ...props }) => {
   const latestColor = React.useRef(color);
   const [focus, onFocus] = React.useState(false);
   const pressed = React.useRef(false);
@@ -271,15 +271,13 @@ const HSVGradient = ({ className, color, onChange, isHsl, ...props }) => {
   );
 };
 
+/* eslint-disable react/require-default-props */
+
 HSVGradient.propTypes = {
   color: CommonTypes.color.isRequired,
   className: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   isHsl: PropTypes.bool,
-};
-
-HSVGradient.defaultProps = {
-  isHsl: false,
 };
 
 export default HSVGradient;

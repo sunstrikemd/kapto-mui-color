@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ColorPalette = ({ size, borderWidth, palette, onSelect, disableAlpha }) => {
+const ColorPalette = ({ size = 24, borderWidth = 0, palette, onSelect = undefined, disableAlpha = false }) => {
   const classes = useStyles();
   const { t } = useTranslate();
   const handleSelectColor = name => {
@@ -53,6 +53,8 @@ const ColorPalette = ({ size, borderWidth, palette, onSelect, disableAlpha }) =>
   );
 };
 
+/* eslint-disable react/require-default-props */
+
 ColorPalette.propTypes = {
   borderWidth: PropTypes.number,
   size: PropTypes.number,
@@ -63,14 +65,6 @@ ColorPalette.propTypes = {
     Don't use alpha
    */
   disableAlpha: PropTypes.bool,
-};
-
-ColorPalette.defaultProps = {
-  borderWidth: 0,
-  size: 24,
-  forwardRef: undefined,
-  onSelect: undefined,
-  disableAlpha: false,
 };
 
 export default ColorPalette;

@@ -97,13 +97,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ColorBox = ({
-  value,
-  palette,
-  inputFormats,
-  deferred,
+  value = undefined,
+  palette = undefined,
+  inputFormats = ['hex', 'rgb'],
+  deferred = false,
   onChange: _onChange,
-  disableAlpha,
-  hslGradient,
+  disableAlpha = false,
+  hslGradient = false,
   ...props
 }) => {
   const { t, i18n } = useTranslate();
@@ -231,6 +231,8 @@ const ColorBox = ({
   );
 };
 
+/* eslint-disable react/require-default-props */
+
 ColorBox.propTypes = {
   value: CommonTypes.color,
   deferred: PropTypes.bool,
@@ -242,15 +244,6 @@ ColorBox.propTypes = {
    */
   disableAlpha: PropTypes.bool,
   hslGradient: PropTypes.bool,
-};
-
-ColorBox.defaultProps = {
-  value: undefined,
-  deferred: false,
-  palette: undefined,
-  inputFormats: ['hex', 'rgb'],
-  disableAlpha: false,
-  hslGradient: false,
 };
 
 export default uncontrolled(ColorBox);

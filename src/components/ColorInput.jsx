@@ -34,13 +34,13 @@ const useStyles = makeStyles({
 });
 
 const ColorInput = ({
-  value,
-  format,
+  value = 'none',
+  format = 'plain',
   onChange,
-  disableAlpha,
-  enableErrorDisplay,
-  forwardRef,
-  disablePlainColor,
+  disableAlpha = false,
+  enableErrorDisplay = true,
+  forwardRef = undefined,
+  disablePlainColor = false,
   ...props
 }) => {
   const classes = useStyles();
@@ -115,6 +115,8 @@ const ColorInput = ({
   );
 };
 
+/* eslint-disable react/require-default-props */
+
 ColorInput.propTypes = {
   value: CommonTypes.color,
   format: PropTypes.string,
@@ -129,15 +131,6 @@ ColorInput.propTypes = {
   enableErrorDisplay: PropTypes.bool,
   forwardRef: PropTypes.shape({ current: PropTypes.elementType }),
   disablePlainColor: PropTypes.bool,
-};
-
-ColorInput.defaultProps = {
-  value: 'none',
-  format: 'plain',
-  forwardRef: undefined,
-  disableAlpha: false,
-  enableErrorDisplay: true,
-  disablePlainColor: false,
 };
 
 export default uncontrolled(ColorInput);
