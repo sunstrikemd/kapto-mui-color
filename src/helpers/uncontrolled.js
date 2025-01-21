@@ -15,11 +15,12 @@ const Uncontrolled = ({ Element, defaultValue, ...props }) => {
 };
 
 export default Element => {
-  const Composite = ({ defaultValue, value, onChange, ...props }) =>
+  const Composite = ({ defaultValue = undefined, value, onChange = undefined, ...props }) =>
     onChange || value !== 'none'
       ? React.createElement(Element, { value: value || defaultValue, onChange: onChange || (() => {}), ...props })
       : React.createElement(Uncontrolled, { Element, defaultValue, ...props });
+  // eslint-disable-next-line react/require-default-props
   Composite.propTypes = { ...Element.propTypes, defaultValue: Element.propTypes.value, onChange: PropTypes.func };
-  Composite.defaultProps = { ...Element.defaultProps, defaultValue: undefined, onChange: undefined };
+
   return Composite;
 };
